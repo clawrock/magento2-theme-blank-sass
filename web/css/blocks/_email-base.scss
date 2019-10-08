@@ -1,39 +1,3 @@
-// /**
-//  * Copyright © Magento, Inc. All rights reserved.
-//  * See COPYING.txt for license details.
-//  */
-
-//  The contents of this file will get split into two output files: email.less and email-inline.less.
-//
-//  email.less
-//  Styles contained in the .email-non-inline() and .media-width() mixins will be output in the email.less file
-//  and will be included in a <style> tag in emails. Non-inline styles should be used for styles that can't be applied
-//  as inline CSS, such as media queries.
-//
-//  email-inline.less
-//  Styles not included in the mixins mentioned above will be included in the email-inline.less file.
-//  Since email client support for CSS in <style> tags is limited, the majority of styles should be added as "inline"
-//  styles. CSS will be applied to transactional email HTML via the Emogrifier library, which only has support for
-//  certain CSS selectors (source: https://github.com/jjriv/emogrifier#supported-css-selectors):
-//
-//  Supported selectors (examples in parenthesis):
-//      * ID (#logo)
-//      * class (.logo)
-//      * type (h1)
-//      * descendant (.logo > a)
-//      * child (.logo a)
-//      * adjacent (.logo + .second-example)
-//      * attribute presence (a[title])
-//      * attribute value (a[title="example"])
-//      * attribute only ([title="example"])
-//
-//  Unsupported selectors (examples in parenthesis):
-//      * first-child (div:first-child)
-//      * last-child (div:last-child)
-//      * nth-child (div:nth-child(3n+1))
-//      * universal (*)
-//      * pseudo (a:hover, a:active, a:focus, span:before, span:after, etc)
-
 //
 //  Variables
 //  _____________________________________________
@@ -71,7 +35,10 @@ table {
 
 @mixin email-non-inline() {
     //  Prevent WebKit and Windows mobile from changing default text sizes
-    body, table, td, a {
+    body,
+    table,
+    td,
+    a {
         -ms-text-size-adjust: 100%;
         -webkit-text-size-adjust: 100%;
     }
@@ -79,13 +46,6 @@ table {
     //  Allow smoother rendering of resized images in Internet Explorer (such as high-resolution logo)
     img {
         -ms-interpolation-mode: bicubic;
-    }
-
-    //  Remove spacing between tables in Outlook 2007 and up
-    table,
-    td {
-        mso-table-lspace: 0pt;
-        mso-table-rspace: 0pt;
     }
 }
 
@@ -103,7 +63,8 @@ body {
     text-align: left;
 }
 
-th, td {
+th,
+td {
     font-family: $font-family__base;
 }
 
@@ -140,7 +101,8 @@ a {
 //  Layout
 //  ---------------------------------------------
 
-html, body {
+html,
+body {
     background-color: $email__background-color;
 }
 
@@ -206,12 +168,15 @@ html, body {
                 background-color: $button-primary__hover__background !important;
             }
 
-            a:active, td:active {
+            a:active,
+            td:active {
                 background-color: $button-primary__active__background !important;
             }
         }
 
-        a:active, a:hover, a:visited {
+        a:active,
+        a:hover,
+        a:visited {
             //  Undo general link hover state
             border: 1px solid $button-primary__hover__background;
             color: $button-primary__hover__color !important;
@@ -224,7 +189,8 @@ html, body {
 //  Messages
 //  ---------------------------------------------
 
-.message-info, .message-gift {
+.message-info,
+.message-gift {
     width: $table__width;
 
     td {
@@ -238,7 +204,12 @@ html, body {
             color: $message-email-link__color;
         }
 
-        h1, h2, h3, h4, h5, h6 {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
             margin-top: 0;
         }
     }
