@@ -28,9 +28,5 @@ $grid-gutter: 60px !default;
     @if ($fluid == true) {
         margin-right: -$layout__width-xs-indent;
         margin-left: -$layout__width-xs-indent;
-        @media (min-width: $screen__m) {
-            margin-right: -$layout-indent__width;
-            margin-left: -$layout-indent__width;
-        }
     }
 }
